@@ -8,20 +8,20 @@ GET /api/restarauntData
 {
   "categoriesById": {
     "1": {
-      "id": Number,
-      "name": String,
-      "top_level": Number,
-      "multiselect": Number,
-      "items": [Number]
+      "id": "int",
+      "name": "string",
+      "top_level": "int",
+      "multiselect": "int",
+      "items": ["int"]
     }
   },
   "productsById": {
-    "id": Number,
-    "menu_category_id": Number,
-    "name": String,
-    "price": Number,
-    "modifiers": [Number]
+    "id": "int",
+    "menu_category_id": "int",
+    "name": "string",
+    "price": "float",
+    "modifiers": ["int"]
   },
-  "categories": [Number]
+  "categories": ["int"]
 }
 ```
