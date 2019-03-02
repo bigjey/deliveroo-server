@@ -32,7 +32,9 @@ response:
 
 ### Basket
 
-`POST /api/basket` - Add item to basket
+#### Add item to basket
+
+`POST /api/basket`
 
 payload:
 
@@ -66,7 +68,9 @@ response:
 ]
 ```
 
-`GET /api/basket` - Get items in basket
+#### Get items in basket
+
+`GET /api/basket` -
 
 response:
 
