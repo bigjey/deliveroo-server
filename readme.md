@@ -12,8 +12,8 @@ response:
     "int <categoryId>": {
       "id": "int <categoryId>",
       "name": "string",
-      "top_level": "int <0|1>",
-      "multiselect": "int <0|1>",
+      "top_level": "int <bool>",
+      "multiselect": "int <bool>",
       "items": ["int <productId>"]
     }
   },
@@ -70,7 +70,7 @@ response:
 
 #### Get items in basket
 
-`GET /api/basket` -
+`GET /api/basket`
 
 response:
 
