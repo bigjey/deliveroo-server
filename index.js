@@ -36,11 +36,18 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/api/basket/items", async (req, res) => {
+app.get("/api/basket", async (req, res) => {
   try {
-    const { results: rows } = await q("SELECT * FROM `basket_item`;");
+    const { results: items } = await q("SELECT * FROM `basket_item`;");
+    const { results: modifiers } = await q(
+      "SELECT * FROM `basket_item_modifier`;"
+    );
 
-    res.json(rows);
+    items.forEach((i) => {
+      i.modifiers = modifiers.filter((m) => m.basket_item_id == i.id);
+    });
+
+    res.json(items);
   } catch (e) {
     console.log(e);
     res.status(400).end();
@@ -58,7 +65,7 @@ app.get("/api/basket/modifiers", async (req, res) => {
   }
 });
 
-app.post("/api/basket/items", async (req, res) => {
+app.post("/api/basket", async (req, res) => {
   try {
     const { qty, itemId, modifiers } = req.body;
 
@@ -87,19 +94,31 @@ app.post("/api/basket/items", async (req, res) => {
       basketItemId
     ]);
 
-    console.log(mods, mods.length);
-
     if (mods.length) {
       await q(
         "INSERT INTO basket_item_modifier (`menu_item_id`, `qty`, `basket_item_id`) values ?;",
         [mods]
       );
     }
-
-    res.end();
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error.message });
+  }
+
+  try {
+    const { results: items } = await q("SELECT * FROM `basket_item`;");
+    const { results: modifiers } = await q(
+      "SELECT * FROM `basket_item_modifier`;"
+    );
+
+    items.forEach((i) => {
+      i.modifiers = modifiers.filter((m) => m.basket_item_id == i.id);
+    });
+
+    res.json(items);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
   }
 });
 
