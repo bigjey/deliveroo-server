@@ -2,9 +2,9 @@
 
 ### Restaraunt menu
 
-```JSON
-GET /api/restarauntData
+`GET /api/restarauntData`
 
+```JSON
 {
   "categoriesById": {
     "1": {
