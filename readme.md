@@ -4,6 +4,8 @@
 
 `GET /api/restarauntData`
 
+response:
+
 ```JSON
 {
   "categoriesById": {
@@ -16,12 +18,19 @@
     }
   },
   "productsById": {
-    "id": "int",
-    "menu_category_id": "int",
-    "name": "string",
-    "price": "float",
-    "modifiers": ["int"]
+    "1": {
+      "id": "int",
+      "menu_category_id": "int",
+      "name": "string",
+      "price": "float",
+      "modifiers": ["int"]
+    }
   },
   "categories": ["int"]
 }
 ```
+
+| Field                       | Description           |
+| --------------------------- | --------------------- |
+| `categoriesById.[].items`   | list of `product id`  |
+| `productsById.[].modifiers` | list of `category id` |
