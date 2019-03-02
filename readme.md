@@ -41,7 +41,7 @@ payload:
   "qty": "int",
   "itemId": "int <productId>",
   "modifiers": {
-    ["int <productId>"]: "int <qty>"
+    "int <productId>": "int <qty>"
   }
 }
 ```
