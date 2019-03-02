@@ -9,7 +9,7 @@ response:
 ```JSON
 {
   "categoriesById": {
-    "1": {
+    "int <categoryId>": {
       "id": "int <categoryId>",
       "name": "string",
       "top_level": "int <0|1>",
@@ -18,7 +18,7 @@ response:
     }
   },
   "productsById": {
-    "1": {
+    "int <productId>": {
       "id": "int <productId>",
       "menu_category_id": "int <categoryId>",
       "name": "string",
